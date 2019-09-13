@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AppService } from '../app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -9,8 +10,11 @@ import { AppService } from '../app.service';
 export class Tab1Page {
   articles: [] = [];
   loading = true;
-  constructor(private appService: AppService) { }
-  
+  constructor(
+    private appService: AppService,
+    private route: Router
+  ) { }
+
   ngOnInit() {
     this.getData();
   }
@@ -23,5 +27,8 @@ export class Tab1Page {
         this.loading = false;
       }
     );
+  }
+  onClick(i) {
+    this.route.navigate(['/tabs/details',i]);
   }
 }

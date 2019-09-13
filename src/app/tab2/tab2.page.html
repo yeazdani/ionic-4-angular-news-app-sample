@@ -6,8 +6,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-  <ion-card class="ion-no-margin ion-no-padding">
+<ion-content>
+  <ion-card class="ion-no-margin ion-no-padding" *ngIf="article?.title">
     <ion-row>
       <ion-col size="12">
         <img [src]="article?.urlToImage" alt="">
@@ -20,13 +20,14 @@
             <ion-card-title>{{article?.title}}</ion-card-title>
             <ion-card-subtitle>Author: {{article?.author}}</ion-card-subtitle>
           </ion-card-header>
-          
+        
           <ion-card-content>
             {{article?.content}}
           </ion-card-content>
 
            <ion-item [href]="article?.url">
-             <ion-label>Main-Source</ion-label>
+             <ion-label color="secondary">News Source</ion-label>
+             <ion-icon slot="end" name="arrow-forward"></ion-icon>
            </ion-item>
           
         <h5 slot=""></h5>

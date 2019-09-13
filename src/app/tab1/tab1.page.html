@@ -8,7 +8,7 @@
 
 <ion-content>
   <ion-progress-bar type="indeterminate" *ngIf="loading"></ion-progress-bar>
-  <ion-card class="welcome-card" *ngFor="let article of articles;index as i" [routerLink]="['/tabs/details',i]">
+  <ion-card class="welcome-card" *ngFor="let article of articles;index as i" (click)="onClick(i)">
     <img [src]="article?.urlToImage" alt="" />
     <ion-card-header>
       <ion-card-subtitle>
