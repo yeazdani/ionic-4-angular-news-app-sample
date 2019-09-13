@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-tab1',
@@ -6,7 +7,21 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  articles: [] = [];
+  loading = true;
+  constructor(private appService: AppService) { }
+  
+  ngOnInit() {
+    this.getData();
+  }
 
-  constructor() {}
-
+  getData() {
+    this.appService.getData().subscribe(
+      res => {
+        this.articles = res.articles;
+        console.log(this.articles);
+        this.loading = false;
+      }
+    );
+  }
 }
